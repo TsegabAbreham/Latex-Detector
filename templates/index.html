@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>LaTeX OCR - Upload</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>LaTeX OCR</h1>
+    <form method="post" enctype="multipart/form-data" id="uploadForm">
+      <input type="file" name="file" accept="image/*" capture="environment" required>
+      <button type="submit" id="submitButton">Upload / Take Photo</button>
+    </form>
+    <!-- Loading message -->
+    <p id="loadingMessage" class="loading-text" style="display:none;">Loading...</p>
+  </div>
+
+  <script>
+    // Show the loading text when the form is submitted
+    const form = document.getElementById('uploadForm');
+    const loadingMessage = document.getElementById('loadingMessage');
+    const submitButton = document.getElementById('submitButton');
+
+    form.addEventListener('submit', function () {
+      loadingMessage.style.display = 'block'; // Show loading message
+      submitButton.disabled = true; // Disable the button to prevent multiple submissions
+    });
+  </script>
+</body>
+</html>

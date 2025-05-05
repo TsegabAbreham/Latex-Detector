@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>LaTeX OCR - Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <!-- MathJax to render LaTeX formulas -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body>
+  <div class="container">
+    <h1>OCR Result</h1>
+    <div class="result">
+      <p><strong>Formula:</strong> <span id="formula">\( {{ formula }} \)</span></p>
+      <p><strong>Confidence:</strong> {{ confidence }}</p>
+      <p><strong>Elapsed Time (ms):</strong> {{ elapse }}</p>
+    </div>
+    <a href="{{ url_for('upload') }}" class="button">Process Another Image</a>
+  </div>
+  <script>
+    // Render math after page load
+    window.MathJax && MathJax.typesetPromise();
+  </script>
+</body>
+</html>
